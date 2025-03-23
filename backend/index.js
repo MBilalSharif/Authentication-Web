@@ -1,13 +1,13 @@
+require('dotenv').config();  // ✅ Load .env at the very top!
 
-require('dotenv').config();  // Load .env FIRST ✅
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const FormDataModel = require('./models/FormData');
 const path = require('path');
 
-const mongoURI = process.env.MONGO_URI;
-console.log("MONGO_URI:", mongoURI);  // ✅ Now will show correctly
+const mongoURI = process.env.MONGO_URI;  // ✅ Load after .env
+console.log("MONGO_URI:", mongoURI);     // ✅ Will now print correctly
 
 const app = express();
 app.use(express.json());
@@ -20,6 +20,7 @@ mongoose.connect(mongoURI, {
 .then(() => console.log('✅ Connected to MongoDB Atlas'))
 .catch((err) => console.error('❌ MongoDB Atlas connection error:', err));
 
+// API routes
 app.post('/register', (req, res) => {
     const { email, password } = req.body;
     FormDataModel.findOne({ email: email })
@@ -56,7 +57,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
 
-// ✅ Use PORT from .env or fallback to 80
 const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
