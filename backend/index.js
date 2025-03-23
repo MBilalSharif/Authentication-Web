@@ -49,7 +49,8 @@ app.post('/login', (req, res)=>{
     })
 })
 
-app.listen(3001, () => {
-    console.log("Server listining on http://127.0.0.1:3001");
+const PORT = process.env.PORT || 80;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 
 });
