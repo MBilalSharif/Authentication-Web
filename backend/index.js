@@ -8,7 +8,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb://127.0.0.1:27017/practice_mern');
+mongoose.connect('mongodb+srv://bilalsaeedmbs:bilal123@cluster0.mongodb.net/practice_mern?retryWrites=true&w=majority');
+
 
 app.post('/register', (req, res) => {
     const { email, password } = req.body;
