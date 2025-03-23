@@ -4,14 +4,13 @@ const mongoose = require('mongoose');
 const FormDataModel = require('./models/FormData');
 const path = require('path');
 require('dotenv').config();  // ✅ Load variables from .env file
-console.log("MONGO_URI:", mongoURI); 
+
+const mongoURI = process.env.MONGO_URI;
+console.log("MONGO_URI:", mongoURI);  // ✅ Proper logging
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-
-// ✅ Use MONGO_URI from .env
-const mongoURI = process.env.MONGO_URI;
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
