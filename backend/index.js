@@ -1,12 +1,13 @@
+
+require('dotenv').config();  // Load .env FIRST ✅
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const FormDataModel = require('./models/FormData');
 const path = require('path');
-require('dotenv').config();  // ✅ Load variables from .env file
 
 const mongoURI = process.env.MONGO_URI;
-console.log("MONGO_URI:", mongoURI);  // ✅ Proper logging
+console.log("MONGO_URI:", mongoURI);  // ✅ Now will show correctly
 
 const app = express();
 app.use(express.json());
