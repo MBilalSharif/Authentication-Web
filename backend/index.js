@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb+srv://bilalsaeedmbs:bilal123@cluster0.mongodb.net/practice_mern?retryWrites=true&w=majority');
+mongoose.connect(mongodb+srv://bilalsaeedmbs:bilal123@cluster0.e6btj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0);
 
 
 
